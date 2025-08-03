@@ -190,11 +190,3 @@ dotnet run
 * **Uso de DTOs**: evita ciclos de serialização e garante que apenas os dados necessários sejam expostos.
 
 ---
-
-**Próximos passos para produção**:
-
-* Migrar para **SQL Server ou PostgreSQL**.
-* Implementar **autenticação (JWT)**.
-* Adicionar **CI/CD** e **testes automatizados**.
-
----
