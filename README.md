@@ -40,6 +40,9 @@ ImoveisAPI/
 │   ├── Cadastro.cs
 │
 ├── Repositories/          # Acesso ao banco (camada de persistência)
+│   ├── Interfaces/
+│   │   ├── IProprietarioRepository.cs
+│   │   ├── ICadastroRepository.cs
 │   ├── CadastroRepository.cs
 │   ├── ProprietarioRepository.cs
 │
@@ -50,6 +53,11 @@ ImoveisAPI/
 │
 ├── Data/                  # Configuração do Entity Framework
 │   ├── AppDbContext.cs
+|
+├── Tests/                 # Testes unitários
+│   ├── Services/
+│   │   ├── CadastroServiceTests.cs
+│   │   ├── ProprietarioServiceTests.cs
 │
 ├── Program.cs             # Configuração da aplicação
 ├── appsettings.json       # Configuração do banco e app
@@ -176,12 +184,41 @@ dotnet run
 * **Entity Framework Core** – ORM para persistência.
 * **SQLite** – Banco de dados leve para desenvolvimento.
 * **Swagger** – Documentação e testes interativos da API.
+* **xUnit + Moq + FluentAssertions** – Testes unitários.
+
+---
+
+## **Testes**
+
+O projeto possui **testes unitários** seguindo o padrão **AAA (Arrange, Act, Assert)**.
+
+### **Como rodar os testes:**
+
+```bash
+dotnet test
+```
+
+**Cobertura dos testes:**
+
+* **CadastroService:**
+
+  * IniciarCadastroAsync
+  * AdicionarImovelAsync
+  * FinalizarCadastroAsync
+  * RetomarCadastroAsync
+  * ObterResumoAsync
+
+* **ProprietarioService:**
+
+  * BuscarPorDocumentoAsync
+  * CalcularValorTotalImoveisAsync
 
 ---
 
 ## **Decisões de Arquitetura**
 
 * **Arquitetura em camadas**: Controllers, Services, Repositories, Models e DTOs.
+* **Interfaces nos repositórios**: Foram criadas (`IProprietarioRepository`, `ICadastroRepository`) para facilitar injeção de dependência e permitir a criação de testes unitários desacoplados.
 * **Por que não DDD/Clean Architecture?**
 
   * Como se trata de um **MVP simples e rápido**, **uma arquitetura em camadas bem definida é suficiente**.
