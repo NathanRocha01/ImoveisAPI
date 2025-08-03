@@ -1,10 +1,11 @@
 ﻿using ImoveisAPI.Data;
 using ImoveisAPI.Models;
+using ImoveisAPI.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace ImoveisAPI.Repositories
 {
-    public class CadastroRepository
+    public class CadastroRepository : ICadastroRepository
     {
         private readonly AppDbContext _context;
 
@@ -19,14 +20,6 @@ namespace ImoveisAPI.Repositories
                 .Include(c => c.Proprietario)
                 .ThenInclude(p => p.Imoveis)
                 .FirstOrDefaultAsync(c => c.Id == id);
-        }
-
-        public async Task<List<Cadastro>> GetAllAsync()
-        {
-            return await _context.Cadastros
-                .Include(c => c.Proprietario)
-                .ThenInclude(p => p.Imoveis)
-                .ToListAsync();
         }
 
         public async Task AddAsync(Cadastro cadastro)

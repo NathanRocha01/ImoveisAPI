@@ -1,16 +1,17 @@
 ﻿using ImoveisAPI.DTOs;
 using ImoveisAPI.Models;
 using ImoveisAPI.Repositories;
+using ImoveisAPI.Repositories.Interfaces;
 
 namespace ImoveisAPI.Services
 {
     public class CadastroService
     {
-        private readonly CadastroRepository _cadastroRepository;
-        private readonly ProprietarioRepository _proprietarioRepository;
+        private readonly ICadastroRepository _cadastroRepository;
+        private readonly IProprietarioRepository _proprietarioRepository;
         private readonly ValorImovelService _valorImovelService;
 
-        public CadastroService(CadastroRepository cadastroRepository, ProprietarioRepository proprietarioRepository, ValorImovelService valorImovelService)
+        public CadastroService(ICadastroRepository cadastroRepository, IProprietarioRepository proprietarioRepository, ValorImovelService valorImovelService)
         {
             _cadastroRepository = cadastroRepository;
             _proprietarioRepository = proprietarioRepository;

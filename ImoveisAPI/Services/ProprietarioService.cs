@@ -1,15 +1,16 @@
 ﻿using ImoveisAPI.DTOs;
 using ImoveisAPI.Models;
 using ImoveisAPI.Repositories;
+using ImoveisAPI.Repositories.Interfaces;
 
 namespace ImoveisAPI.Services
 {
     public class ProprietarioService
     {
-        private readonly ProprietarioRepository _proprietarioRepository;
+        private readonly IProprietarioRepository _proprietarioRepository;
         private readonly ValorImovelService _valorImovelService;
 
-        public ProprietarioService(ProprietarioRepository proprietarioRepository, ValorImovelService valorImovelService)
+        public ProprietarioService(IProprietarioRepository proprietarioRepository, ValorImovelService valorImovelService)
         {
             _proprietarioRepository = proprietarioRepository;
             _valorImovelService = valorImovelService;
